@@ -1,0 +1,859 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+<title>reveal.js</title>
+
+<link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
+<link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
+<link rel="stylesheet" href="node_modules/reveal.js/dist/theme/black.css">
+
+<style>
+code {
+    white-space: pre;
+}
+.reveal pre code {
+    max-height: none !important;
+    overflow: visible !important;
+}
+</style>
+
+<style>
+  table.no-lines td {
+    border: none !important;
+  }
+</style>
+
+<!-- Theme used for syntax highlighted code -->
+<link rel="stylesheet" href="node_modules/reveal.js/plugin/highlight/monokai.css">
+</head>
+
+<body>
+<div class="reveal">
+<div class="slides">
+
+<section data-auto-animate>
+<h1><span data-id="sast-text" style="color: blue;">SAST</span></h1>
+<h2 style="text-transform: none;">
+<span style="color: white; text-decoration: line-through; text-decoration-color: red;">
+Configurations
+</span>
+&nbsp Adaptive
+</h2>
+<p><em>Oren Ish Shalom</em></p>
+<p>[&nbsp;
+<a href="https://www.linkedin.com/in/oren-ish-shalom-68156649/" target="_blank">
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 24 24" fill="#0A66C2">
+<path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM0 8h5v16H0V8zm7.5 0h4.7v2.2h.07c.65-1.2 2.24-2.5 4.6-2.5 4.9 0 5.8 3.2 5.8 7.3V24h-5v-7.4c0-1.8-.03-4.1-2.5-4.1-2.5 0-2.9 2-2.9 4v7.5h-5V8z"/>
+</svg>
+</a>&nbsp;]
+</p>
+</section>
+
+<section data-auto-animate>
+<h1><span data-id="sast-text" style="color: blue;">SAST</span></h1>
+  
+<table style="
+  margin: 4rem auto 0 auto;
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  font-weight: 300;
+  border-collapse: collapse;
+  width: 60%;
+">
+  
+<tr>
+<td style="font-size: 4rem; padding: 0.15em 0; text-align: left;">source</td>
+<td data-id="emoji-source" style="font-size: 4rem; padding: 0.15em 0; text-align: right;">📄</td>
+</tr>
+<tr>
+<td style="font-size: 4rem; padding: 0.15em 0; text-align: left;">knowledge</td>
+<td data-id="emoji-knowledge" style="font-size: 4rem; padding: 0.15em 0; text-align: right;">🧠</td>
+</tr>
+<tr>
+<td style="font-size: 4rem; padding: 0.15em 0; text-align: left;">query</td>
+<td data-id="emoji-query" style="font-size: 4rem; padding: 0.15em 0; text-align: right;">❔</td>
+</tr>
+</table>
+</section>
+
+<section data-auto-animate data-auto-animate-easing="cubic-bezier(0.68, -0.55, 0.265, 1.55)">
+<h1><span data-id="sast-text" style="color: blue;">SAST</span></h1>
+<h3 style="text-transform: none; font-weight: normal; color: #aaa; margin: 0.3em 0 0 0;">( really ?! )</h3>
+<table class="no-lines" style="margin: 5rem auto 0 auto; border-collapse: collapse;">
+<tr>
+<td style="padding: 0 3rem; text-align: center;">
+<img src="svgs/logo_openai.svg" height="192" style="filter: invert(1);">
+</td>
+<td style="padding: 0 3rem; text-align: center;">
+<img src="svgs/logo_deepseek.svg" height="192">
+</td>
+<td style="padding: 0 3rem; text-align: center;">
+<img src="svgs/logo_anthropic.svg" height="192">
+</td>
+</tr>
+</table>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      `select *, name as ... from ... and tbl='${args.tn}';`,
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      `select *, name as ... from ... and tbl=?;`,
+      [args.tn],
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      //
+      // 1. const strings 👈
+      //
+      `select *, name as ... from ... and tbl=?;`,
+      [args.tn],
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      `select *, name as ... from ... and tbl=?;`,
+      //
+      // 2. syntax / shape 👈
+      //
+      [args.tn],
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+  	//
+    // 3. constructor code 👈
+    //
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      `select *, name as ... from ... and tbl=?;`,
+      [args.tn],
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-typescript">//
+// 4. third party imports 👈
+//
+import knex from 'knex'
+
+class SqliteClient {
+
+  constructor(...) {
+    this.sqlClient = knex(...);
+  }
+
+  async triggerList(args: any = {}) {
+
+    const response = await this.sqlClient.raw(
+      `select *, name as ... from ... and tbl=?;`,
+      [args.tn],
+    );
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+  <h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2><br>
+  <table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
+    <tbody>
+      <tr>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>strings</em></td>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>parsers</em></td>
+      </tr>
+      <tr>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>syntax / shape</em></td>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>constructors</em></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+          <em>third party imports</em>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2><br>
+<h3 style="text-transform: none;">Motivating &nbsp; Example</h3>
+<div style="display: flex; justify-content: center; align-items: center; gap: 1em; margin-top: 1em;">
+<img src="images/tornado_final.png" style="height: 3em;">
+<img src="images/python_logo.svg" style="height: 2em; margin-top: 0.5em;">
+</div>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">from sickchill import env
+
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    next_ = self.get_query_argument("next", next_)
+    self.redirect(next_ or "/" + env.DEFAULT_PAGE + "/")
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">from sickchill import env
+
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    #
+    #...(next_ or "/" + env.DEFAULT_PAGE + "/")
+    self.redirect("/" + env.DEFAULT_PAGE + "/")
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">#
+# 1. cross file 👈
+#
+from sickchill import env
+
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    #
+    #...(next_ or "/" + env.DEFAULT_PAGE + "/")
+    self.redirect("/" + env.DEFAULT_PAGE + "/")
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">from sickchill import env
+#
+# 2. class inheritance 👈
+#
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    #
+    #...(next_ or "/" + env.DEFAULT_PAGE + "/")
+    self.redirect("/" + env.DEFAULT_PAGE + "/")
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">from sickchill import env
+
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    #
+    #                 3. type resolution 👈
+    #            |----------------------------|
+    self.redirect("/" + env.DEFAULT_PAGE + "/")
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-python">from sickchill import env
+
+class LoginHandler( BaseHandler ):
+
+  def post(self, next_=None):
+
+    if ... == env.WEB_USERNAME and ... == env.WEB_PASSWORD:
+
+      self.set_secure_cookie("sickchill_user", env.API_KEY)
+
+    else:
+
+      login_error = _("Incorrect username or password")
+
+    self.redirect("/" + env.DEFAULT_PAGE + "/")
+    #------------|
+    #
+    # 4. method override 👈
+    #
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+  <h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2><br>
+  <table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
+    <tbody>
+      <tr>
+        <td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+          <em>cross file</em>
+        </td>
+      </tr>
+      <tr>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>class inheritance</em></td>
+        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>method override</em></td>
+      </tr>
+      <tr>
+        <td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+          <em>type resolution</em>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</section>
+
+<section>
+<div style="display: flex; justify-content: center; align-items: center; gap: 2.5rem;">
+<img src="images/javascript_logo.svg" height="80">
+<img src="images/java_logo.svg" height="80" style="transform: scale(1.8) translateY(-13px);">
+<img src="images/typescript_logo.svg" height="80">
+<img src="images/php_logo.svg" height="80" style="transform: scale(1.1);">
+<img src="images/ruby_logo.svg" height="80">
+<img src="images/golang_logo.svg" height="80" style="transform: scale(1.5) translateY(-3px);">
+<img src="images/python_logo.svg" height="80" style="transform: scale(1.2);">
+<img src="images/csharp_logo.svg" height="80" style="transform: scale(1.2);">
+</div>
+
+<table style="
+    margin: 4rem auto 0 auto;
+    font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+    font-weight: 300;
+    border-collapse: collapse;
+">
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">unification</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">know. base</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">queries</td></tr>
+</table>
+</section>
+
+<section>
+<br>
+<h1>
+<span style="color: blue; text-transform: none;">bitcode
+<span style="font-family: 'STIX Two Math', serif; font-size: 7rem;">&nbsp;→&nbsp;</span>
+kb
+</span>
+</h1>
+<table style="
+    margin: 4rem auto 0 auto;
+    font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+    font-weight: 300;
+    border-collapse: collapse;
+">
+
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">simplified</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">abstraction</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">transformers</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">&nbsp;</td></tr>
+
+</table>
+
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2><br>
+<h3 style="text-transform: none;">transformers ( concat )</h3>
+<div style="display: flex; justify-content: center; align-items: center; gap: 1em; margin-top: 1em;">
+<img src="images/laravel_logo.svg" style="height: 2.5em;">
+<img src="images/php_logo.svg" style="height: 2em; transform: translateY(0.1em);">
+</div>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-php">class UserController extends Controller {
+  public function editIcons( Request $request ) {
+    $link = $request->input( ... );
+    $links = new Link;
+    $links->link = $link;
+    $links->user_id = $userId;
+    #
+    # taint entire db 👈
+    #
+    $links->save(); } }
+
+# dispatched by button press ( *.blade.php )
+#                ⬇️⬇️⬇️⬇️ 
+#   <img src="{{ getFavIcon($link->id) }}">
+
+function getFavIcon( $id ) {
+  $url = Link::find( $id )->link;
+  $ch = curl_init( $url );
+  $response = curl_exec( $ch );
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-php">function getFavIcon( $id ) {
+  $url = Link::find( $id )->link;
+  $ch = curl_init( $url );
+  $response = curl_exec( $ch );
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers="3-6" class="language-php">function getFavIcon( $id ) {
+  $url = Link::find( $id )->link;
+  #
+  # concatenation transformer 👈
+  #
+  $f = 'http://www.google.com/s2/favicons?domain=' . $url;
+  $favicon = file_get_contents( $f );
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers="3-6" class="language-php">function getFavIcon( $id ) {
+  $url = Link::find( $id )->link;
+  #
+  # concatenation transformer 👈
+  #
+  $f = 'http://www.google.com/s2/favicons?domain=' . $url;
+  $favicon = file_get_contents( $f );
+}
+</code>
+</pre>
+<h2 style="text-transform: none;">File Write &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-31451</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers="6" class="language-python">@user.route("/api/docs_check", methods=["POST"])
+def check_docs():
+
+  data = request.get_json()
+  vectorstore = "vectors/" + data["docs"]
+  with open(vectorstore + "index.faiss", "wb") as f:
+    f.write(...)
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2 style="text-transform: none;">SSRF &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-35451</span></h2><br>
+<table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
+<tbody>
+<tr>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>tainted database</em></td>
+</tr>
+<tr>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>html / code</em>
+</td>
+</tr>
+<tr>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>.blade.php</em></td>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>.erb</em></td>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>...</em></td>
+</tr>
+<tr>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>str &nbsp; concat &nbsp; transformer</em>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section data-auto-animate>
+<h2>XSS &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-47067</span></h2><br>
+<h3 style="text-transform: none;">transformers ( call )</h3>
+<div style="display: flex; justify-content: center; align-items: center; gap: 1em; margin-top: 1em;">
+<img src="images/gin_logo.webp" style="height: 3em;">
+<img src="images/golang_word_logo.svg" style="height: 1.5em; transform: translateY(0.4em);">
+</div>
+</section>
+
+<section data-auto-animate>
+<h2>XSS &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-47067</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-golang">func Plist(c *gin.Context) {
+
+  linkName_1    := strings.TrimSuffix(c.Param("link"),".plist")
+  linkName_2, _ := utils.SafeAtob( linkName_1 )
+  linkName_3    := ...
+  linkName_4    := ...
+  linkName_5, _ := ...
+  linkName_6, _ := ...
+
+  Url := linkName_6.String()
+
+  plist := fmt.Sprintf(`<... version="1.0" ... %s ...>`, Url)
+  c.Writer.WriteString(plist)
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2>XSS &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-47067</span></h2>
+<pre data-id="code-animation">
+<code data-line-numbers class="language-golang">func Plist(c *gin.Context) {
+
+  linkName_1    := strings.TrimSuffix(c.Param("link"),".plist")
+  linkName_2, _ := utils.SafeAtob( linkName_1 )
+  linkName_3    := ...
+  linkName_4    := ...
+  linkName_5, _ := ...
+  linkName_6, _ := ...
+
+  Url := linkName_6.String()
+
+  //
+  // transformer for "call" instructions 👈
+  //
+  Url = strings.ReplaceAll(Url, "<", "[")
+  Url = strings.ReplaceAll(Url, ">", "]")
+
+  plist := fmt.Sprintf(`<... version="1.0" ... %s ...>`, Url)
+  c.Writer.WriteString(plist)
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h2>XSS &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-47067</span></h2><br>
+<table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
+<tbody>
+<tr>
+<td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>calls transformer</em></td>
+</tr>
+<tr>
+<td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>context sensitive</em>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<h1 style="text-transform: none;">Sanitation</h1>
+<img src="images/broom.svg" height="240">
+</section>
+
+<section>
+<h2 style="text-transform: none;">
+Inline
+<img src="images/broom.svg" style="height: 1em; vertical-align: -0.4em;">
+</h2>
+<pre data-id="code-animation">
+<code data-line-numbers="6-8,10-11,19" class="language-javascript">const url = ( location ) => {
+
+  const next = Query.parse( location.search ).n || appRoot
+
+  // sanitation
+  if (!next.startsWith('/') || next.startsWith('//')) {
+    return appRoot
+  }
+
+  // join
+  return next
+}
+
+const Login = () => {
+
+  const location = useLocation()
+  const handleSubmit = useCallback( async ( ... ) => {
+    try {
+      window.location = url(location)
+</code>
+</pre>
+</section>
+
+<section>
+<h2 style="text-transform: none;">
+Loops
+<img src="images/broom.svg" style="height: 1em; vertical-align: -0.4em;">
+</h2>
+<pre data-id="code-animation">
+<code data-line-numbers="1-6,14-15" class="language-python">def clear_filename(filename: str) -> str:
+
+    badchars = '\\/:*?\"<>|'
+    for c in badchars:
+        filename = filename.replace(c, '')
+    return filename
+
+@Namespace.route('/&lt;name&gt;')
+class File( Resource ):
+    def put(self, name: str):
+
+        data = request.json
+
+        # sanitation   |-------------|
+        data["file"] = clear_filename(data["name"])
+        file_path = os.path.join(temp_dir_path, data["file"])
+        with open(file_path, "wb") as f:
+            ...
+</code>
+</pre>
+</section>
+
+<section>
+<h2 style="text-transform: none;">
+Throws
+<img src="images/broom.svg" style="height: 1em; vertical-align: -0.4em;">
+</h2>
+<pre data-id="code-animation">
+<code data-line-numbers="5-6,14" class="language-python">def raise_if_user_provided_url_unsafe(url: str):
+    parsed_url = urllib.parse.urlparse(url)
+    addrinfo = socket.getaddrinfo(parsed_url.hostname, None)
+    for _, _, _, _, sockaddr in addrinfo:
+        if ip_address(sockaddr[0]).is_private:
+            raise ValueError("Internal hostname")
+
+@require_http_methods(["POST"])
+def test_slack_webhook(request):
+    try:
+        #
+        # sanitation
+        # -------------------------------|
+        raise_if_user_provided_url_unsafe(webhook)
+        response = requests.post(webhook, verify=False, json=m)
+    except:
+        ...
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
+<tbody>
+<tr>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>const &nbsp; strings</em></td>
+<td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>cross file</em></td>
+</tr>
+<tr>
+<td colspan="1" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>imports</em></td>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>syntax / shape</em></td>
+<td colspan="1" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>constructors</em></td>
+</tr>
+<tr>
+<td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>taint analysis</em>
+<td colspan="3" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>interprocedural</em>
+</td>
+</tr>
+<tr>
+<td id="concat" colspan="5" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>context &nbsp; sensitive &nbsp; transformers<sup style="font-size: 0.6em; color: red; margin-left: 0.3em;">TP</sup></em>
+</td>
+</tr>
+<tr>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>html / code</em></td>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>types</em></td>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>inline</em></td>
+<td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>loops</em></td>
+<td id="throws-cell" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
+<em>throws<sup style="font-size: 0.6em; color: red; margin-left: 0.3em;">FP</sup></em>
+</td>
+</tr>
+</tbody>
+</table>
+</section>
+
+<section>
+<div style="display: flex; justify-content: center; align-items: center; gap: 2.5rem;">
+<img src="images/openai.svg" height="120" style="filter: invert(1);">
+<img src="images/deepseek.svg" height="120">
+<img src="images/claude.svg" height="120">
+<img src="images/gemini.svg" height="120">
+<img src="images/perplexity.svg" height="120">
+<img src="images/grok.svg" height="120" style="filter: invert(1);">
+</div>
+
+<table style="
+    margin: 4rem auto 0 auto;
+    font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+    font-weight: 300;
+    border-collapse: collapse;
+">
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">performance</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">privacy</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">cost</td></tr>
+</table>
+</section>
+
+</div>
+</div>
+
+<script src="node_modules/reveal.js/dist/reveal.js"></script>
+<script src="node_modules/reveal.js/plugin/notes/notes.js"></script>
+<script src="node_modules/reveal.js/plugin/markdown/markdown.js"></script>
+<script src="node_modules/reveal.js/plugin/highlight/highlight.js"></script>
+<script src="node_modules/reveal.js/plugin/math/math.js"></script>
+<script>
+    // More info about initialization & config:
+    // - https://revealjs.com/initialization/
+    // - https://revealjs.com/config/
+    Reveal.initialize({
+        hash: true,
+        controls: false,
+        progress: false,
+
+        // Learn about plugins: https://revealjs.com/plugins/
+        plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+    });
+</script>
+</body>
+</html>
