@@ -125,171 +125,32 @@ Predefined
 </section>
 
 <section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">import knex from 'knex'
+<h1><span style="color: blue;">Approach</span></h1>
 
-class SqliteClient {
+<table style="
+  margin: 3rem auto 0 auto;
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  font-weight: 300;
+  border-collapse: collapse;
+  width: 70%;
+">
 
-  constructor(...) {
-
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      `select *, name as ... from ... and tbl='${args.tn}';`,
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">import knex from 'knex'
-
-class SqliteClient {
-
-  constructor(...) {
-
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      `select *, name as ... from ... and tbl=?;`,
-      [args.tn],
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">import knex from 'knex'
-
-class SqliteClient {
-
-  constructor(...) {
-
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      //
-      // 1. const strings 👈
-      //
-      `select *, name as ... from ... and tbl=?;`,
-      [args.tn],
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">import knex from 'knex'
-
-class SqliteClient {
-
-  constructor(...) {
-
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      `select *, name as ... from ... and tbl=?;`,
-      //
-      // 2. syntax / shape 👈
-      //
-      [args.tn],
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">import knex from 'knex'
-
-class SqliteClient {
-
-  constructor(...) {
-  	//
-    // 3. constructor code 👈
-    //
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      `select *, name as ... from ... and tbl=?;`,
-      [args.tn],
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-<h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2>
-<pre data-id="code-animation">
-<code data-line-numbers class="language-typescript">//
-// 4. third party imports 👈
-//
-import knex from 'knex'
-
-class SqliteClient {
-
-  constructor(...) {
-    this.sqlClient = knex(...);
-  }
-
-  async triggerList(args: any = {}) {
-
-    const response = await this.sqlClient.raw(
-      `select *, name as ... from ... and tbl=?;`,
-      [args.tn],
-    );
-
-</code>
-</pre>
-</section>
-
-<section data-auto-animate>
-  <h2 style="text-transform: none;">SQLi &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2023-43794</span></h2><br>
-  <table style="margin: 0 auto; border-collapse: collapse; border: 0.5px solid lightgreen;">
-    <tbody>
-      <tr>
-        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>strings</em></td>
-        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>parsers</em></td>
-      </tr>
-      <tr>
-        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>syntax / shape</em></td>
-        <td style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;"><em>constructors</em></td>
-      </tr>
-      <tr>
-        <td colspan="2" style="border: 0.5px solid lightgreen; padding: 0.5em; text-align: center;">
-          <em>third party imports</em>
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<tr>
+<td style="font-size: 3rem; padding: 0.5em 0; text-align: left; vertical-align: middle;">dev</td>
+<td style="font-size: 3rem; padding: 0.5em 0; text-align: right; vertical-align: middle;">
+grep, find<br>
+wget, write
+</td>
+</tr>
+<tr>
+<td style="font-size: 3rem; padding: 0.5em 0; text-align: left; vertical-align: middle;">sec</td>
+<td style="font-size: 3rem; padding: 0.5em 0; text-align: right; vertical-align: middle;">
+urls<br>
+endpoints<br>
+fqns, auth.
+</td>
+</tr>
+</table>
 </section>
 
 <section data-auto-animate>
