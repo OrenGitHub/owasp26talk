@@ -192,6 +192,53 @@ Predefined
 </section>
 
 <section data-auto-animate>
+<h1 style="text-transform: none;"><span style="color: blue;">Endpoints</span></h1>
+<pre data-id="code-routing">
+<code class="language-yaml"># routing
+
+</code>
+</pre>
+<br>
+<pre data-id="code-wiring">
+<code class="language-yaml"># wiring
+
+</code>
+</pre>
+<br>
+<pre data-id="code-handler">
+<code class="language-php"># handler code
+
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h1 style="text-transform: none;"><span style="color: blue;">Endpoints</span></h1>
+<pre data-id="code-routing">
+<code class="language-yaml"># routing
+phpbb_notifications_mark_read:
+    _controller:  ...
+</code>
+</pre>
+<br>
+<pre data-id="code-wiring">
+<code class="language-yaml"># wiring
+    class: phpbb\notification\controller\mark_read
+    arguments:
+        ...
+</code>
+</pre>
+<br>
+<pre data-id="code-handler">
+<code class="language-php"># handler code
+class mark_read {
+    public function handle(int $id): Response { ... }
+}
+</code>
+</pre>
+</section>
+
+<section data-auto-animate>
 <h2 style="text-transform: none;">O.Redirect &nbsp;&nbsp;&nbsp; <span style="color: blue;">CVE-2024-53995</span></h2><br>
 <h3 style="text-transform: none;">Motivating &nbsp; Example</h3>
 <div style="display: flex; justify-content: center; align-items: center; gap: 1em; margin-top: 1em;">
