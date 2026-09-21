@@ -416,7 +416,7 @@ file:     'route.ts'</code>
 <h3 data-id="analysis-subtitle" style="text-transform: none; color: #aaa; font-weight: 300; margin-top: 2.5rem;">analysis &nbsp;<span style="position: relative; top: -0.05em;">🔭</span>&nbsp; control flow</h3>
 <br>
 <pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
-<code data-line-numbers class="language-sh">query:    'SSRF' and 'open-redirect'
+<code data-line-numbers class="language-sh">query:    'SSRF' and 'Open Redirect'
 fromdir:  'apps/web/app/api/v1/integrations/slack/callback'
 fromfile: 'route.ts'
 location: 'start[11:1] → end[86:2]'</code>
@@ -430,14 +430,91 @@ location: 'start[11:1] → end[86:2]'</code>
 <pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
 <code data-line-numbers class="language-sh">response:  'SSRF'
 #########################
+
 sink:      'nodejs.fetch'
 urltype:   'const string'
 urlvalue:  'https://slack.com/api/oauth.v2.access'
 founddir:  '_____________________________________'
 foundfile: '_____________________________________'
-location:  'start[42:22] → end[48:7]'</code>
+location:  'start[42:22] → end[48:7]'
+
+</code>
 </pre>
 </section>  
+
+<section data-auto-animate data-auto-animate-unmatched="false">
+<h1 data-id="put-title" style="text-transform: none;"><span style="color: blueviolet;">Candidate</span></h1>
+<h3 data-id="analysis-subtitle" style="text-transform: none; color: #aaa; font-weight: 300; margin-top: 2.5rem;">analysis &nbsp;<span style="position: relative; top: -0.05em;">🔭</span>&nbsp; control flow</h3>
+<br>
+<pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
+<code data-line-numbers class="language-sh">response:  'Open Redirect'
+#########################
+
+sink:      'nodejs.Response.redirect' ( 1 of 2 )
+urltype:   'formatted string'
+urlvalue:  '${WEBAPP_URL}/environments/${environmentId}/...'
+founddir:  '_____________________________________'
+foundfile: '_____________________________________'
+location:  'start[81:14] → end[81:97]'
+
+</code>
+</pre>
+</section>  
+
+<section data-auto-animate data-auto-animate-unmatched="false">
+<h1 data-id="put-title" style="text-transform: none;"><span style="color: blueviolet;">Candidate</span></h1>
+<h3 data-id="analysis-subtitle" style="text-transform: none; color: #aaa; font-weight: 300; margin-top: 2.5rem;">analysis &nbsp;<span style="position: relative; top: -0.05em;">🔭</span>&nbsp; control flow</h3>
+<br>
+<pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
+<code data-line-numbers class="language-sh">response:  'Open Redirect'
+#########################
+#                                      👇
+sink:      'nodejs.Response.redirect' ( 1 of 2 )
+urltype:   'formatted string'
+urlvalue:  '${WEBAPP_URL}/environments/${environmentId}/...'
+founddir:  '_____________________________________'
+foundfile: '_____________________________________'
+location:  'start[81:14] → end[81:97]'
+
+</code>
+</pre>
+</section>  
+
+<section data-auto-animate data-auto-animate-unmatched="false">
+<h1 data-id="put-title" style="text-transform: none;"><span style="color: blueviolet;">Candidate</span></h1>
+<h3 data-id="analysis-subtitle" style="text-transform: none; color: #aaa; font-weight: 300; margin-top: 2.5rem;">analysis &nbsp;<span style="position: relative; top: -0.05em;">🔭</span>&nbsp; control flow</h3>
+<br>
+<pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
+<code data-line-numbers class="language-sh">response:  'Open Redirect'
+#########################
+sink:      'nodejs.Response.redirect' ( 1 of 2 )
+urltype:   'formatted string'
+#
+#            |____👀___|
+urlvalue:  '${WEBAPP_URL}/environments/${environmentId}/...'
+founddir:  '_____________________________________'
+foundfile: '_____________________________________'
+location:  'start[81:14] → end[81:97]'</code>
+</pre>
+</section>
+
+<section data-auto-animate data-auto-animate-unmatched="false">
+<h1 data-id="put-title" style="text-transform: none;"><span style="color: blueviolet;">Candidate</span></h1>
+<h3 data-id="analysis-subtitle" style="text-transform: none; color: #aaa; font-weight: 300; margin-top: 2.5rem;">analysis &nbsp;<span style="position: relative; top: -0.05em;">🔬</span>&nbsp; dataflow</h3>
+<br>
+<pre data-id="code-analysis" style="font-size: 0.625em; width: 100%; max-width: 100%; line-height: 1.25;">
+<code data-line-numbers class="language-sh">query:  'dataflow'
+#########################
+fromvalue:  'req: next/server.NextRequest'
+fromdir:    '_____________________________________'
+fromfile:   '_____________________________________'
+tolocation: 'start[11:27] → end[11:30]'
+tovalue:    '${WEBAPP_URL}'
+todir:      '_____________________________________'
+tofile:     '_____________________________________'
+tolocation: 'start[81:35] → end[81:45]'</code>
+</pre>
+</section>
 
 </div>
 </div>
