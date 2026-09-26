@@ -261,7 +261,7 @@ class mark_read {
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
 <pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
 <code data-line-numbers class="language-typescript">
-import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+import { Prisma } from "@prisma/client";</code>
 </pre>
 </section>
 
@@ -269,13 +269,13 @@ import { PrismaErrorType } from "@formbricks/database/types/error";</code>
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
 <pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
 <code data-line-numbers class="language-typescript">
-import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+import { Prisma } from "@prisma/client";</code>
 </pre>
 <pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
 <code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
 "paths": {
     "@/*": [...],              &lt;--- no match 😶
-    "@prisma/client/*": [...], &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶 ( trailing / )
 },</code>
 </pre>
 </section>
@@ -284,13 +284,13 @@ import { PrismaErrorType } from "@formbricks/database/types/error";</code>
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
 <pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
 <code data-line-numbers class="language-typescript">
-import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+import { Prisma } from "@prisma/client";</code>
 </pre>
 <pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
 <code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
 "paths": {
     "@/*": [...],              &lt;--- no match 😶
-    "@prisma/client/*": [...], &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶 ( trailing / )
 },
 
 "extends": "@formbricks/config-typescript/nextjs.json",</code>
@@ -301,13 +301,13 @@ import { PrismaErrorType } from "@formbricks/database/types/error";</code>
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
 <pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
 <code data-line-numbers class="language-typescript">
-import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+import { Prisma } from "@prisma/client";</code>
 </pre>
 <pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
 <code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
 "paths": {
     "@/*": [...],              &lt;--- no match 😶
-    "@prisma/client/*": [...], &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶 ( trailing / )
 },
 
 "extends": "@formbricks/config-typescript/nextjs.json",</code>
