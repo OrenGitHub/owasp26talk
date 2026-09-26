@@ -143,7 +143,7 @@ Predefined
 </section>
 
 <section data-auto-animate>
-<h1 style="text-transform: none;"><span style="color: blue;">ReAct</span></h1>
+<h1 style="text-transform: none; font-size: 2.1em; white-space: nowrap;"><span style="color: blue;">Reason &nbsp; Act &nbsp; Observe</span></h1>
 
 <table style="
   margin: 3rem auto 0 auto;
@@ -164,7 +164,7 @@ Predefined
 <td style="font-size: 3.5rem; padding: 0.5em 0; text-align: left; vertical-align: middle;">sec</td>
 <td style="font-size: 3rem; padding: 0.5em 0; text-align: right; vertical-align: middle; line-height: 1.6;">
 <code class="pill">endpoints</code><br>
-<code class="pill">fqns</code> <code class="pill">auth</code>
+<code class="pill">dataflow</code> <code class="pill">auth</code>
 </td>
 </tr>
 </table>
@@ -192,6 +192,21 @@ Predefined
 <tr><td style="font-size: 4rem; padding: 0.15em 0;">algorithms</td></tr>
 <tr><td style="font-size: 4rem; padding: 0.15em 0;">facts</td></tr>
 <tr><td style="font-size: 4rem; padding: 0.15em 0;">api</td></tr>
+</table>
+</section>
+
+<section>
+<h1 style="text-transform: none;"><span style="color: blue;">ReAct ( primitives )</span></h1>
+
+<table style="
+  margin: 4rem auto 0 auto;
+  font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
+  font-weight: 300;
+  border-collapse: collapse;
+">
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">endpoints</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">qualified names</td></tr>
+<tr><td style="font-size: 4rem; padding: 0.15em 0;">resolved calls</td></tr>
 </table>
 </section>
 
@@ -242,35 +257,65 @@ class mark_read {
 </pre>
 </section>
 
-<section>
+<section data-auto-animate data-auto-animate-restart>
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
-
-<table style="
-  margin: 4rem auto 0 auto;
-  font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
-  font-weight: 300;
-  border-collapse: collapse;
-">
-<tr><td style="font-size: 3.5rem; padding: 0.15em 0;">tsconfig.json</td></tr>
-<tr><td style="font-size: 3.5rem; padding: 0.15em 0;">indirection</td></tr>
-<tr><td style="font-size: 3.5rem; padding: 0.15em 0;">native types</td></tr>
-<tr><td style="font-size: 3.5rem; padding: 0.15em 0;">3rd party</td></tr>
-</table>
+<pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-typescript">
+import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+</pre>
 </section>
 
-<section>
-<h1 style="text-transform: none;"><span style="color: blue;">Context &nbsp;Overload</span></h1>
+<section data-auto-animate>
+<h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
+<pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-typescript">
+import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+</pre>
+<pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
+"paths": {
+    "@/*": [...],              &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶
+},</code>
+</pre>
+</section>
 
-<table style="
-  margin: 4rem auto 0 auto;
-  font-family: Consolas, Menlo, 'DejaVu Sans Mono', 'Liberation Mono', monospace;
-  font-weight: 300;
-  border-collapse: collapse;
-">
-<tr><td style="font-size: 4rem; padding: 0.15em 0;">endpoints</td></tr>
-<tr><td style="font-size: 4rem; padding: 0.15em 0;">qualified names</td></tr>
-<tr><td style="font-size: 4rem; padding: 0.15em 0;">resolved calls</td></tr>
-</table>
+<section data-auto-animate>
+<h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
+<pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-typescript">
+import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+</pre>
+<pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
+"paths": {
+    "@/*": [...],              &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶
+},
+
+"extends": "@formbricks/config-typescript/nextjs.json",</code>
+</pre>
+</section>
+
+<section data-auto-animate>
+<h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Qualified Names</span></h1>
+<pre data-id="code-project" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-typescript">
+import { PrismaErrorType } from "@formbricks/database/types/error";</code>
+</pre>
+<pre data-id="code-tsconfig" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-sh"># &lt;...&gt;/tsconfig.json
+"paths": {
+    "@/*": [...],              &lt;--- no match 😶
+    "@prisma/client/*": [...], &lt;--- no match 😶
+},
+
+"extends": "@formbricks/config-typescript/nextjs.json",</code>
+</pre>
+<pre data-id="code-nextjs-config" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-sh"># &lt;...&gt;/nextjs.json
+"moduleResolution": "bundler",</code>
+</pre>
 </section>
 
 <section data-auto-animate>
