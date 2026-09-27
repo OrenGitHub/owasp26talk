@@ -27,6 +27,19 @@ code {
 </style>
 
 <style>
+  .reveal pre code .nominal-type,
+  .reveal pre code.language-go .hljs-type {
+    color: #66d9ef;
+    font-style: italic;
+    font-weight: 700;
+  }
+  .reveal pre code .declared-type {
+    color: #a6e22e;
+    font-weight: 700;
+  }
+</style>
+
+<style>
   code.pill {
     background-color: rgba(200, 200, 200, 0.3);
     padding: 0 0.35em 0.03em 0.35em;
@@ -318,6 +331,23 @@ import { Prisma } from "@prisma/client";</code>
 </pre>
 </section>
 
+<section>
+<h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Resolved Calls</span></h1>
+<pre data-id="code-renderer" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-go" data-declared-type="Renderer">type Renderer interface {
+	Name() string
+	FileNamePatterns() []string
+	SanitizerRules() []setting.MarkupSanitizerRule
+	Render(ctx *RenderContext, input io.Reader, output io.Writer) error
+}</code>
+</pre>
+<pre data-id="code-render-with" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-go">func RenderWithRenderer(ctx *RenderContext, renderer Renderer) error {
+    ...
+    return SanitizeReader(pr2, renderer.Name(), finalProcessor)</code>
+</pre>
+</section>
+
 <section data-auto-animate>
 <h1 data-id="example-title" style="text-transform: none; white-space: nowrap; text-align: center;"><span style="color: blue;">Example</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img data-id="example-logo" src="svgs/logo_formbricks.svg" style="height: 1em; vertical-align: middle; position: relative; top: -0.05em;"></h1>
 
@@ -577,6 +607,71 @@ tolocation: 'start[81:35] → end[81:45]'</code>
     // More info about initialization & config:
     // - https://revealjs.com/initialization/
     // - https://revealjs.com/config/
+
+    // Give the Go nominal types on the Resolved Calls slide a dedicated
+    // light-blue color, both where a type is declared and where it appears
+    // as a parameter type. highlight.js has no semantic knowledge, so we
+    // list the names explicitly to avoid also coloring function names.
+    Reveal.on('ready', () => {
+        // Nominal type references (usage sites, including qualified names).
+        const NOMINAL_RE = /\bsetting\.MarkupSanitizerRule\b|\bio\.Reader\b|\bio\.Writer\b|\bRenderContext\b|\bRenderer\b/g;
+        // highlight.js classes that only wrap other tokens (no color of their own).
+        const CONTAINER_CLASSES = new Set(['hljs-function', 'hljs-class', 'hljs-params']);
+        const CUSTOM_COLOR_CLASSES = new Set(['nominal-type', 'declared-type']);
+        const escapeHtml = s => s.replace(/[&<>]/g, ch => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;' }[ch]));
+
+        function isColoredAncestor(node, codeRoot) {
+            let p = node.parentElement;
+            while (p && p !== codeRoot) {
+                if (p.tagName === 'SPAN' && p.classList) {
+                    for (const c of p.classList) {
+                        if (CUSTOM_COLOR_CLASSES.has(c)) return true;
+                        if (c.startsWith('hljs-') && !c.startsWith('hljs-ln') && !CONTAINER_CLASSES.has(c)) return true;
+                    }
+                }
+                p = p.parentElement;
+            }
+            return false;
+        }
+        function collectTextNodes(code) {
+            const walker = document.createTreeWalker(code, NodeFilter.SHOW_TEXT);
+            const nodes = [];
+            while (walker.nextNode()) nodes.push(walker.currentNode);
+            return nodes;
+        }
+
+        document.querySelectorAll('code.language-go').forEach(code => {
+            // Yellow declared type name (declaration site of a struct/interface).
+            const declared = code.dataset.declaredType;
+            if (declared) {
+                const declRe = new RegExp('\\b' + declared.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + '\\b');
+                for (const node of collectTextNodes(code)) {
+                    if (isColoredAncestor(node, code)) continue;
+                    const m = declRe.exec(node.nodeValue);
+                    if (!m) continue;
+                    const wrapper = document.createElement('span');
+                    wrapper.innerHTML =
+                        escapeHtml(node.nodeValue.slice(0, m.index)) +
+                        '<span class="declared-type">' + escapeHtml(m[0]) + '</span>' +
+                        escapeHtml(node.nodeValue.slice(m.index + m[0].length));
+                    node.parentNode.replaceChild(wrapper, node);
+                    break;
+                }
+            }
+            // Lightblue italic nominal type references (usage sites).
+            for (const node of collectTextNodes(code)) {
+                if (isColoredAncestor(node, code)) continue;
+                NOMINAL_RE.lastIndex = 0;
+                if (!NOMINAL_RE.test(node.nodeValue)) continue;
+                NOMINAL_RE.lastIndex = 0;
+                const wrapper = document.createElement('span');
+                wrapper.innerHTML = escapeHtml(node.nodeValue)
+                    .replace(NOMINAL_RE, '<span class="nominal-type">$&</span>');
+                node.parentNode.replaceChild(wrapper, node);
+            }
+        });
+    });
+
     Reveal.initialize({
         hash: true,
         controls: false,
