@@ -174,7 +174,7 @@ Predefined
 </td>
 </tr>
 <tr>
-<td style="font-size: 3.5rem; padding: 0.5em 0; text-align: left; vertical-align: middle;">sec</td>
+<td style="font-size: 3.5rem; padding: 0.5em 0; text-align: left; vertical-align: middle;">sast</td>
 <td style="font-size: 3rem; padding: 0.5em 0; text-align: right; vertical-align: middle; line-height: 1.6;">
 <code class="pill">endpoints</code><br>
 <code class="pill">dataflow</code> <code class="pill">auth</code>
@@ -209,7 +209,7 @@ Predefined
 </section>
 
 <section>
-<h1 style="text-transform: none;"><span style="color: blue;">ReAct ( primitives )</span></h1>
+<h1 style="text-transform: none;"><span style="color: blue;">SAST &nbsp; primitives</span></h1>
 
 <table style="
   margin: 4rem auto 0 auto;
@@ -230,14 +230,12 @@ Predefined
 
 </code>
 </pre>
-<br>
-<pre data-id="code-wiring">
+<pre data-id="code-wiring" style="margin-top: 60px;">
 <code class="language-yaml"># wiring
 
 </code>
 </pre>
-<br>
-<pre data-id="code-handler">
+<pre data-id="code-handler" style="margin-top: 60px;">
 <code class="language-php"># handler code
 
 </code>
@@ -249,19 +247,18 @@ Predefined
 <pre data-id="code-routing">
 <code class="language-yaml"># routing
 phpbb_notifications_mark_read:
-    _controller:  ...
+    path: /mark-read/{id}
+    controller: notification.controller.mark_read:handle
 </code>
 </pre>
-<br>
-<pre data-id="code-wiring">
+<pre data-id="code-wiring" style="margin-top: 60px;">
 <code class="language-yaml"># wiring
     class: phpbb\notification\controller\mark_read
     arguments:
         ...
 </code>
 </pre>
-<br>
-<pre data-id="code-handler">
+<pre data-id="code-handler" style="margin-top: 60px;">
 <code class="language-php"># handler code
 class mark_read {
     public function handle(int $id): Response { ... }
@@ -595,6 +592,126 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 </pre>
 </section>
 
+<section data-auto-animate data-auto-animate-restart>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <!-- Left column: robot (top), arrows, brain (bottom) -->
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <!-- Right column: work queue (top), history (bottom) -->
+  <div style="display: flex; flex-direction: column; width: 420px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-bulk" style="padding: 0.3em 0.5em;">PUT&nbsp;&nbsp;/api/v2/.../bulk</div>
+        <div data-id="ep-get" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">GET&nbsp;&nbsp;/users/{id}</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow: POST popped from queue. queue-items keeps a fixed
+     min-height matching frame 1 so queue-box bottom (and therefore the
+     history-box top) stays frozen — which freezes the brain. GET naturally
+     takes the top row where POST used to be, so the robot stays frozen too. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 420px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/users/{id}</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
+        &nbsp;
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 3: the LLM processed PUT /api/v2/.../bulk and
+     recorded in history that it hits the db (✓). -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 420px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/users/{id}</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;✓</div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
 </div>
 </div>
 
@@ -671,6 +788,15 @@ tolocation: 'start[81:35] → end[81:45]'</code>
             }
         });
     });
+
+    // Scanner Flow slides: the robot/brain alignment used to be computed
+    // dynamically to track the first queue endpoint and the history-box top.
+    // That caused the robot to jitter during auto-animate transitions
+    // because the computed paddings differed slightly between frames and
+    // auto-animate interpolated them. The two frames now share the same
+    // queue-items / history-items min-height, so a single static padding on
+    // the left column gives a frozen layout — see each flow frame's
+    // `padding: 62px 0 56px;` on the left-column div.
 
     Reveal.initialize({
         hash: true,
