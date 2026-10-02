@@ -612,19 +612,19 @@ tolocation: 'start[81:35] → end[81:45]'</code>
   </div>
 
   <!-- Right column: work queue (top), history (bottom) -->
-  <div style="display: flex; flex-direction: column; width: 420px;">
+  <div style="display: flex; flex-direction: column; width: 440px;">
     <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
     <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
       <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
         <div data-id="ep-bulk" style="padding: 0.3em 0.5em;">PUT&nbsp;&nbsp;/api/v2/.../bulk</div>
-        <div data-id="ep-get" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">GET&nbsp;&nbsp;/users/{id}</div>
-        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-get" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">GET&nbsp;&nbsp;/api/.../callback</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">POST&nbsp;/api/.../storage</div>
         <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
       </div>
     </div>
     <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
-    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
-      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
         &nbsp;
       </div>
     </div>
@@ -654,18 +654,18 @@ tolocation: 'start[81:35] → end[81:45]'</code>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
   </div>
 
-  <div style="display: flex; flex-direction: column; width: 420px;">
+  <div style="display: flex; flex-direction: column; width: 440px;">
     <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
     <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
       <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
-        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/users/{id}</div>
-        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/api/.../callback</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">POST&nbsp;/api/.../storage</div>
         <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
       </div>
     </div>
     <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
-    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
-      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
         &nbsp;
       </div>
     </div>
@@ -693,19 +693,255 @@ tolocation: 'start[81:35] → end[81:45]'</code>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
   </div>
 
-  <div style="display: flex; flex-direction: column; width: 420px;">
+  <div style="display: flex; flex-direction: column; width: 440px;">
     <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
     <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
       <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
-        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/users/{id}</div>
-        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">PUT&nbsp;&nbsp;/settings</div>
+        <div data-id="ep-get" style="padding: 0.3em 0.5em;">GET&nbsp;&nbsp;/api/.../callback</div>
+        <div data-id="ep-put" style="padding: 0.3em 0.5em; border-top: 1px solid #444;">POST&nbsp;/api/.../storage</div>
         <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
       </div>
     </div>
     <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
-    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.7em 0.5em; min-height: 2.4em;">
-      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 129px; text-align: left;">
-        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;✓</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 4: pop GET /api/.../callback from the queue.
+     ep-get fades out; ep-put and ep-dots float upward via matching
+     data-ids. History unchanged. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-put" style="padding: 0.3em 0.5em;">POST&nbsp;/api/.../storage</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 5: the LLM processed GET /api/.../callback and
+     logged two properties in history: ssrf and open redirect. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-put" style="padding: 0.3em 0.5em;">POST&nbsp;/api/.../storage</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-callback-ssrf" style="padding: 0.3em 0; border-top: 1px solid #444;">GET&nbsp;/api/.../callback&nbsp;→&nbsp;ssrf&nbsp;<span style="color: #a6e22e;">✓</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 6: pop POST /api/.../storage from the queue.
+     ep-put fades out; ep-dots floats upward to row 1. History unchanged. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-callback-ssrf" style="padding: 0.3em 0; border-top: 1px solid #444;">GET&nbsp;/api/.../callback&nbsp;→&nbsp;ssrf&nbsp;<span style="color: #a6e22e;">✓</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 7: the LLM processed POST /api/.../storage and
+     logged in history that it handles urls (potential SSRF surface). -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-callback-ssrf" style="padding: 0.3em 0; border-top: 1px solid #444;">GET&nbsp;/api/.../callback&nbsp;→&nbsp;ssrf&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-storage-urls" style="padding: 0.3em 0; border-top: 1px solid #444;">POST&nbsp;/api/.../storage&nbsp;→&nbsp;urls<span style="color: #e6db74;">&nbsp;!!</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 8: a new endpoint POST .../storage/local is pushed
+     onto the top of the queue. ep-dots stays matched (floats down one
+     row); ep-local fades in at the top. History unchanged. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-local" style="padding: 0.3em 0.5em;">POST&nbsp;.../storage/local</div>
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; border-top: 1px solid #444; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-callback-ssrf" style="padding: 0.3em 0; border-top: 1px solid #444;">GET&nbsp;/api/.../callback&nbsp;→&nbsp;ssrf&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-storage-urls" style="padding: 0.3em 0; border-top: 1px solid #444;">POST&nbsp;/api/.../storage&nbsp;→&nbsp;urls<span style="color: #e6db74;">&nbsp;!!</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- Scanner Flow frame 9: pop POST .../storage/local AND log the finding
+     in history. The red bold ✗ marks the vulnerability we just found. -->
+<section data-auto-animate>
+<div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
+
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+    <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
+    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="1" x2="6" y2="107"/>
+        <polyline points="1.5,102 6,108.5 10.5,102"/>
+      </svg>
+      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <line x1="6" y1="109" x2="6" y2="3"/>
+        <polyline points="1.5,8 6,1.5 10.5,8"/>
+      </svg>
+    </div>
+    <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
+  </div>
+
+  <div style="display: flex; flex-direction: column; width: 440px;">
+    <div data-id="queue-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-bottom: 0.4em;">queue</div>
+    <div data-id="queue-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 1em 0.5em;">
+      <div data-id="queue-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.6em; line-height: 1.5; text-align: left; min-height: 214px;">
+        <div data-id="ep-dots" style="padding: 0.3em 0.5em; color: #888; text-align: center;">...</div>
+      </div>
+    </div>
+    <div data-id="history-title" style="color: #66d9ef; font-style: italic; font-weight: 700; font-size: 0.9em; text-align: center; margin-top: 50px; margin-bottom: 0.4em;">history</div>
+    <div data-id="history-box" style="border: 1px solid #666; border-radius: 10px; padding: 0.4em 0.5em 0.5em; min-height: 2.4em;">
+      <div data-id="history-items" style="font-family: Consolas, Menlo, monospace; font-size: 0.55em; line-height: 1.5; min-height: 200px; text-align: left;">
+        <div data-id="h-ep-bulk" style="padding: 0.3em 0;">PUT&nbsp;/api/v2/.../bulk&nbsp;→&nbsp;db&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-callback-ssrf" style="padding: 0.3em 0; border-top: 1px solid #444;">GET&nbsp;/api/.../callback&nbsp;→&nbsp;ssrf&nbsp;<span style="color: #a6e22e;">✓</span></div>
+        <div data-id="h-ep-storage-urls" style="padding: 0.3em 0; border-top: 1px solid #444;">POST&nbsp;/api/.../storage&nbsp;→&nbsp;urls<span style="color: #e6db74;">&nbsp;!!</span></div>
+        <div data-id="h-ep-local-file" style="padding: 0.3em 0; border-top: 1px solid #444;">POST&nbsp;.../storage/local&nbsp;→&nbsp;file&nbsp;<span style="color: #ff3b3b; font-weight: bold;">✗</span></div>
       </div>
     </div>
   </div>
