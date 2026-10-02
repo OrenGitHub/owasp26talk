@@ -596,16 +596,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
   <!-- Left column: robot (top), arrows, brain (bottom) -->
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -639,16 +639,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -678,16 +678,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -718,16 +718,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -756,16 +756,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -795,16 +795,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -833,16 +833,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -873,16 +873,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
@@ -913,16 +913,16 @@ tolocation: 'start[81:35] → end[81:45]'</code>
 <section data-auto-animate>
 <div data-id="flow-grid" style="display: flex; justify-content: center; align-items: stretch; column-gap: 200px; margin: 0 auto;">
 
-  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px;">
+  <div style="display: flex; flex-direction: column; align-items: center; justify-content: space-between; padding: 62px 0 56px; position: relative;">
     <div data-id="llm-box" style="font-size: 2em; line-height: 1;">🤖</div>
-    <div data-id="kb-llm-arrow" style="display: flex; gap: 24px; color: #aaa;">
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="1" x2="6" y2="107"/>
-        <polyline points="1.5,102 6,108.5 10.5,102"/>
-      </svg>
-      <svg width="12" height="110" viewBox="0 0 12 110" fill="none" stroke="currentColor" stroke-width="1" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <line x1="6" y1="109" x2="6" y2="3"/>
-        <polyline points="1.5,8 6,1.5 10.5,8"/>
+    <div data-id="kb-llm-arrow" style="position: absolute; top: 104px; bottom: 98px; left: 50%; margin-left: -90px; width: 180px; color: #aaa; pointer-events: none;">
+      <svg width="100%" height="100%" viewBox="0 0 180 400" preserveAspectRatio="none" fill="none" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="overflow: visible;">
+        <!-- Left U-path: ROBOT (left) -> left arm -> down left vertical -> right arm into KB's LEFT (right-pointing arrow) -->
+        <path d="M 26 0 L -16 0 L -16 400 L 26 400"/>
+        <polyline points="19,393 26,400 19,407"/>
+        <!-- Right U-path: KB (right) -> right arm -> up right vertical -> left arm into ROBOT's RIGHT (left-pointing arrow) -->
+        <path d="M 154 400 L 196 400 L 196 0 L 154 0"/>
+        <polyline points="161,-7 154,0 161,7"/>
       </svg>
     </div>
     <div data-id="kb-box" style="font-size: 2em; line-height: 1;">🧠</div>
