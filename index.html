@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
 
-<title>reveal.js</title>
+<title>sast</title>
+<link rel="icon" type="image/png" href="images/dhscanner_logo.png">
 
 <link rel="stylesheet" href="node_modules/reveal.js/dist/reset.css">
 <link rel="stylesheet" href="node_modules/reveal.js/dist/reveal.css">
@@ -328,7 +329,7 @@ import { Prisma } from "@prisma/client";</code>
 </pre>
 </section>
 
-<section>
+<section data-auto-animate data-auto-animate-restart>
 <h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Resolved Calls</span></h1>
 <pre data-id="code-renderer" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
 <code data-line-numbers class="language-go" data-declared-type="Renderer">type Renderer interface {
@@ -346,6 +347,24 @@ import { Prisma } from "@prisma/client";</code>
 </section>
 
 <section data-auto-animate>
+<h1 style="text-transform: none; font-size: 2em;"><span style="color: blue;">Resolved Calls</span></h1>
+<pre data-id="code-renderer" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4;">
+<code data-line-numbers class="language-go" data-declared-type="Renderer">type Renderer interface {
+	Name() string
+	FileNamePatterns() []string
+	SanitizerRules() []setting.MarkupSanitizerRule
+	Render(ctx *RenderContext, input io.Reader, output io.Writer) error
+}</code>
+</pre>
+<pre data-id="code-render-with" style="font-size: 0.55em; width: 100%; max-width: 100%; line-height: 1.4; margin-top: 40px;">
+<code data-line-numbers class="language-go">func RenderWithRenderer(ctx *RenderContext, renderer Renderer) error {
+    ...
+    //                         |~~~~~~~~~~~~~|
+    return SanitizeReader(pr2, renderer.Name(), finalProcessor)</code>
+</pre>
+</section>
+
+<section data-auto-animate data-auto-animate-restart>
 <h1 data-id="example-title" style="text-transform: none; white-space: nowrap; text-align: center;"><span style="color: blue;">Example</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img data-id="example-logo" src="svgs/logo_formbricks.svg" style="height: 1em; vertical-align: middle; position: relative; top: -0.05em;"></h1>
 
 <table style="
